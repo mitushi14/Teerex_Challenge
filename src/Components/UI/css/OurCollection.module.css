@@ -1,0 +1,39 @@
+.flexContainer {
+  justify-content: space-around;
+  margin: 4rem 0;
+  color: var(--collection);
+}
+
+.line {
+  margin-top: 0.1rem;
+  min-width: 40%;
+  height: 2px;
+  background-color: var(--collection);
+  align-self: center;
+}
+
+.text {
+  font-size: 1.4rem;
+  word-wrap: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1020px) {
+  .text {
+    font-size: 1.2rem;
+  }
+  .line {
+    min-width: 30%;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .text {
+    font-size: 1rem;
+  }
+  .line {
+    min-width: 20%;
+  }
+}

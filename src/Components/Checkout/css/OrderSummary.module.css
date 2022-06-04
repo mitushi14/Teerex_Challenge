@@ -1,0 +1,20 @@
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.colorStrip {
+  width: 100%;
+  height: 1rem;
+  background-color: var(--button);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 2.4rem 4rem var(--shadow);
+}
+
+.container {
+  background-color: var(--filterPanel);
+  padding: 1rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 2.4rem 4rem var(--shadow);
+}

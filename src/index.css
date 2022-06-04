@@ -1,0 +1,16 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 62.5%;
+  /* background-color: #f18574b9 !important; */
+}
+
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

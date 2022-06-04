@@ -1,0 +1,10 @@
+.account {
+  margin-left: 5rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 900px) {
+  .account {
+    margin-left: 2rem;
+  }
+}

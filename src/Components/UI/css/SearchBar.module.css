@@ -1,0 +1,47 @@
+.searchBar {
+  position: relative;
+  display: inline-flex;
+  font-size: 1rem;
+  align-items: flex-end;
+  width: 20rem;
+  margin-left: 1.4rem;
+  transition: all 0.4s;
+  height: 2.5rem;
+}
+
+.searchBarInput,
+.searchBarButton {
+  border: none;
+  height: auto;
+  outline: none;
+  background-color: transparent;
+  padding-bottom: 7px;
+}
+.searchBarButton {
+  width: 2.5rem;
+  border-bottom: 1px solid black;
+}
+
+.searchBarInput {
+  width: 100%;
+  border-bottom: 1px solid #000;
+  padding-left: 5px;
+}
+
+.searchBar:hover,
+.searchBar:active,
+.searchBar:visited {
+  transform: scale(0.95);
+}
+
+.searchBar:hover,
+.searchBar:active,
+.searchBar:visited {
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.searchbarMobile {
+  margin-left: 0;
+  width: 100%;
+}

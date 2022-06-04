@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 30%;
+  width: 40%;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+}
+
+.header {
+  background: var(--dark);
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.header h4 {
+  margin: 0;
+  color: white;
+  color: var(--button);
+}
+
+.content {
+  padding: 1rem;
+}
+
+.close {
+  background-color: transparent;
+  border: none;
+}
+
+.modalOpen {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modalClose {
+  animation: closeModal 0.4s ease-out forwards;
+}

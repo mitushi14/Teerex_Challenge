@@ -1,0 +1,9 @@
+.shoppingCart {
+  height: 2rem;
+  width: 2rem;
+}
+.cartBadge:hover,
+.cartBadge:visited {
+  color: var(--fontColorDark);
+  font-weight: bold;
+}

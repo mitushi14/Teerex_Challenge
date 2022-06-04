@@ -1,0 +1,18 @@
+.addToCartButton {
+  border: none;
+  background-color: var(--button);
+  color: var(--fontColorOnBg);
+  border-radius: 5px;
+  height: 2.5rem;
+  width: 6rem;
+  box-shadow: 1px 1px 5px var(--shadow);
+  font-weight: 500;
+}
+
+.addToCartButton:hover,
+.addToCartButton:visited {
+  background-color: transparent;
+  border: 2px solid var(--button);
+  color: var(--button);
+  box-shadow: 1px 1px 5px var(--shadow);
+}

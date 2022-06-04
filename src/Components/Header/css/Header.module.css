@@ -1,0 +1,55 @@
+.flexElement2 {
+  margin-left: auto;
+}
+
+.logoImage {
+  width: 6rem;
+  height: 2rem;
+  margin-top: 0.3rem;
+}
+
+.navigationBar {
+  height: 3rem;
+  z-index: 1;
+  font-weight: 400;
+  background-color: var(--fontColorOnBg);
+}
+.cartProfileLogo {
+  height: 2.3rem !important;
+  width: 2.3rem !important;
+  margin-left: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--fontColorDark);
+}
+
+.headerMargin {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.products {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.products:hover,
+.products:visited {
+  border-radius: 5px;
+  color: var(--fontColorDark);
+  font-weight: bold;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+@media screen and (max-width: 390px) {
+  .headerMargin {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

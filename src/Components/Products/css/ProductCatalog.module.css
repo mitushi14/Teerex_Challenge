@@ -1,0 +1,132 @@
+.heroImage {
+  background-image: linear-gradient(to right bottom, transparent, transparent),
+    url("../../../Images/tshirts-bnw.jpg");
+
+  background-size: cover;
+  height: 110vh;
+  width: 100%;
+  background-position: center;
+}
+
+.heroImageText {
+  color: #b5431e;
+  font-weight: 600;
+  position: absolute;
+  left: 15%;
+  top: 28%;
+  /* margin-top: 6.5rem; */
+  /* text-align: center; */
+  /* margin-left: 5rem; */
+  font-size: 7rem;
+  /* text-shadow: 0 2px 5px var(--heroImageTextShadow); */
+}
+
+.heroImageButton {
+  background-color: var(--button);
+  outline: none;
+  border: none;
+  padding: 0.6rem 2rem;
+  left: 40%;
+  bottom: 5%;
+  text-decoration: none;
+  transform: translate(50%, 50%);
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 2px 2px 1rem var(--buttonShadow);
+  color: var(--fontColorOnBg);
+  font-size: 1.2rem;
+}
+
+.heroImageButton:hover,
+.heroImageButton:visited {
+  background-color: var(--buttonHover);
+}
+
+.marginTop {
+  margin-top: 2rem;
+}
+
+.pseudoContainer {
+  height: auto;
+  transition: all 0.5s;
+}
+
+.padding {
+  padding: 0.5rem;
+}
+
+.heroImageButton:hover,
+.heroImageButton:visited {
+  font-weight: bold;
+  color: var(--fontColorOnBg);
+}
+
+.section {
+  padding-bottom: 8rem;
+}
+
+/* MEDIA QUERIES  */
+
+@media screen and (max-width: 630px) {
+  .heroImageText {
+    font-size: 4rem;
+    margin-left: 4rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .heroImageText {
+    font-size: 3rem;
+    margin-left: 3rem;
+  }
+  .section {
+    padding-bottom: 4rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .responsive {
+    justify-content: end;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .pseudoContainer {
+    padding: 0 2rem;
+  }
+
+  .heroImageButton {
+    left: 28%;
+    padding: 0.4rem 1.8rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .pseudoContainer {
+    padding: 0 3rem;
+  }
+
+  .heroImageButton {
+    left: 15%;
+    padding: 0.4rem 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .responsive {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .heroImageButton {
+    left: 7%;
+    padding: 0.4rem 1.4rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pseudoContainer {
+    padding: 0 4rem;
+  }
+}

@@ -1,0 +1,116 @@
+:root {
+  --logoHeading: #b5431e;
+  --fontColorOnBg: #fff;
+  --light: #f2ece7ef;
+  --dark: #f2ece7;
+  --heroImageText: #f76029;
+  --heroImageTextShadow: #f76029b0;
+  --fontColorDark: #111;
+  --collection: #b6b5b5;
+  --shadow: #00000013;
+  --buttonHover: #913618;
+  --button: #b5431e;
+  --buttonShadow: #b5441ebb;
+  --cardColorShadow: #6b6b6b65;
+  --filterPanel: #fdf2e9;
+  --navBar: #ee7e34e0;
+  --qtyButton: #1d4ed8;
+  --footerColor: #767676;
+  --footerHeadingColor: #555;
+  --copyrightBanner: #222222f1;
+}
+
+.flexRowContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexColumnContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.activeLink {
+  border-radius: 5px;
+  color: var(--fontColorDark);
+  font-weight: bold;
+}
+
+.websiteContainer {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+.footerContainer {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.buttons {
+  background-color: var(--button);
+  color: var(--fontColorOnBg);
+  outline: none;
+  border: none;
+  padding: 0.4rem;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px var(--buttonShadow);
+}
+
+.buttons:hover,
+.buttons:visited {
+  background-color: var(--buttonHover);
+}
+.buttonsNoFill {
+  background-color: transparent;
+  color: var(--button);
+  font-weight: bold;
+  outline: none;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 7px;
+}
+
+.buttonsNoFill:hover,
+.buttonsNoFill:visited {
+  color: var(--buttonHover);
+}
+.footerColor {
+  color: var(--footerColor);
+}
+
+.footerHeading {
+  color: var(--footerHeadingColor);
+  font-size: 1.5rem;
+}
+
+.infolist {
+  font-weight: 500;
+  margin: 0 0;
+}
+
+.responsive {
+  margin-left: 5rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 760px) {
+  .websiteContainer {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .responsive {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .responsive {
+    margin-left: 0;
+  }
+
+  .footerContainer {
+    margin-left: 3rem;
+  }
+}

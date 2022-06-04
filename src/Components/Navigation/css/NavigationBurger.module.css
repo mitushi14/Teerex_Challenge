@@ -1,0 +1,59 @@
+.listItemsContainer {
+  z-index: 11;
+  position: absolute;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 1.5rem;
+  transition: all 0.5s;
+  margin-left: 1.4rem;
+}
+
+ul {
+  padding: 0;
+}
+
+.navigationButton {
+  background-color: transparent;
+  border: none;
+  margin-right: 0.4rem;
+}
+
+li:hover {
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+.profileContainer {
+  height: 20%;
+  width: 100%;
+  background-color: var(--navBar);
+  position: relative;
+}
+
+.accountCircle {
+  height: 6rem !important;
+  width: 6rem !important;
+}
+
+.accountNameContainer {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+}
+
+.spacing {
+  justify-content: end;
+}
+
+.marginButton {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.cartList {
+  margin-left: 0;
+}

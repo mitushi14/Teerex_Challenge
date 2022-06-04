@@ -1,0 +1,17 @@
+.itemSpacing {
+  justify-content: space-between;
+}
+
+.addressCard {
+  border: 2px solid var(--filterPanel);
+  padding: 1rem;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.addressCard.active {
+  background-color: var(--filterPanel);
+}

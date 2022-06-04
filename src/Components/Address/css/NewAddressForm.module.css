@@ -1,0 +1,20 @@
+.marginRight {
+  margin-right: 1rem;
+}
+
+.marginTop {
+  margin-top: 1rem;
+}
+
+.input,
+textarea {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.formContainer {
+  background-color: var(--filterPanel);
+  padding: 1rem;
+  border-radius: 5px;
+}

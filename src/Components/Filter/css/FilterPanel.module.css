@@ -1,0 +1,73 @@
+.filterBox {
+  background-color: var(--filterPanel);
+  height: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4rem var(--shadow);
+  min-width: 25%;
+  margin-bottom: 2rem;
+  z-index: 2;
+  transition: all 1s ease-in;
+  position: sticky;
+  left: 0;
+  top: 10px;
+  opacity: 1;
+}
+
+.checkbox {
+  border-radius: 16px;
+}
+
+.generalButton {
+  background-color: var(--button);
+  border: none;
+  color: var(--fontColorOnBg);
+  border-radius: 5px;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.marginBottom {
+  margin-bottom: 1rem;
+}
+
+.colorContainer {
+  width: 10rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 780px) {
+  .border {
+    border-right: none;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .filterBox {
+    width: 14rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .filterBox {
+    /* width: 100%; */
+    position: initial;
+  }
+}
+@media screen and (max-width: 355px) {
+  .filterBox {
+    width: auto;
+  }
+
+  .spaceBetween {
+    width: auto;
+    justify-content: none;
+  }
+}

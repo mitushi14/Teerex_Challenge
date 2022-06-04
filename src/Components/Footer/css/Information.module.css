@@ -1,0 +1,10 @@
+.infoSpace {
+  margin-left: 2rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 900px) {
+  .infoSpace {
+    margin-left: 0;
+  }
+}

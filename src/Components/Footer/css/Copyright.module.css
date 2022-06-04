@@ -1,0 +1,9 @@
+.centerAlign {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+.copyrightColor {
+  background-color: var(--copyrightBanner);
+}
