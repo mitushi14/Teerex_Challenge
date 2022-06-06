@@ -38,21 +38,26 @@ const CheckoutPage = () => {
               {addressCtx.address.length > 0 &&
                 addressCtx.address.map((address) => {
                   return (
-                    <div className="col-3">
+                    <div
+                      className={`col-sm-3 col-xs-6 ${CheckoutModule.addressCardMarginBottom}`}
+                    >
                       <AddressItem address={address}></AddressItem>
                     </div>
                   );
                 })}
             </div>
+
             {showAddressForm && (
               <NewAddressForm showForm={setAddressForm}></NewAddressForm>
             )}
-            {!showAddressForm && addressCtx.address.length === 0 && (
+            {!showAddressForm && addressCtx.address.length <= 3 ? (
               <AddNewAddressButton
                 onclick={() => {
                   setAddressForm(true);
                 }}
               ></AddNewAddressButton>
+            ) : (
+              !showAddressForm && <p>You can only add 4 addresses at a time</p>
             )}
             <h2 className={CheckoutModule.marginTop}>Cart Items</h2>
             <hr></hr>

@@ -46,6 +46,7 @@ const NewAddressForm = ({ showForm }) => {
       <textarea
         placeholder="Full address"
         rows="4"
+        data-gramm="false"
         cols="50"
         required
         onChange={(event) => {

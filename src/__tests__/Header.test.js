@@ -1,16 +1,32 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import Header from "../Components/Header/js/Header";
-import Enzyme, { shallow, render, mount } from "enzyme";
-import toJson from "enzyme-to-json";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { createMemoryHistory } from "history";
+import userEvent from "@testing-library/user-event";
 
 describe("Header Component", () => {
-  it("should show the Product link", () => {
-    const link = shallow(<Header />);
-    const element = link.find("NavLink");
-    expect(element.text()).toBe(Products);
+  const history = createMemoryHistory();
+  test("should have text as test", () => {
+    render(
+      <BrowserRouter>
+        <Header></Header>
+      </BrowserRouter>
+    );
+    const productLink = screen.getByRole("link", { name: /products/i });
+    userEvent.click(productLink);
+    expect(history.location.pathname).toBe("/");
+  });
+
+  test("should have Cart Icon", () => {
+    const route = "/checkout";
+    render(
+      <BrowserRouter history={history}>
+        <Header></Header>
+      </BrowserRouter>
+    );
+    history.push(route);
+    const link = screen.getByTestId("cart");
+    userEvent.click(link);
+    expect(history.location.pathname).toBe(route);
   });
 });

@@ -1,6 +1,6 @@
 import { useSnackbar } from "notistack";
 
-export const AddToCartButton = (props) => {
+const AddToCartButton = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return (

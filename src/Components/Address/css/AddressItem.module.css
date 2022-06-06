@@ -3,7 +3,6 @@
 }
 
 .addressCard {
-  border: 2px solid var(--filterPanel);
   padding: 1rem;
   border-radius: 5px;
   height: 100%;
@@ -12,6 +11,11 @@
   cursor: pointer;
 }
 
-.addressCard.active {
+.active {
   background-color: var(--filterPanel);
+  border: 2px solid var(--button);
+}
+
+.inactive {
+  border: 2px solid var(--filterPanel);
 }

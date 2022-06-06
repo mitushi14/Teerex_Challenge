@@ -18,3 +18,9 @@ table {
 .padding {
   padding: 0.5rem;
 }
+
+@media screen and (max-width: 575px) {
+  .addressCardMarginBottom {
+    margin-bottom: 1rem;
+  }
+}

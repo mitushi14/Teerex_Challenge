@@ -3,7 +3,7 @@ import AddressContext from "./Address-Context";
 
 const defaultState = {
   address: [],
-  selected: " ",
+  selected: "",
 };
 
 const addressReducer = (state, action) => {
@@ -11,15 +11,21 @@ const addressReducer = (state, action) => {
     const updatedAddressArray = state.address.concat(action.address);
     return {
       address: updatedAddressArray,
+      selected: state.selected,
     };
-  }
-
-  if (action.type === "REMOVE") {
+  } else if (action.type === "REMOVE") {
     const updatedAddressArray = state.address.filter((item) => {
       return item.id !== action.id;
     });
     return {
       address: updatedAddressArray,
+      selected: state.selected,
+    };
+  } else if (action.type === "SELECTED") {
+    const selectedAddress = action.id;
+    return {
+      address: [...state.address],
+      selected: selectedAddress,
     };
   }
   return defaultState;
@@ -43,11 +49,19 @@ const AddressProvider = (props) => {
       id: id,
     });
   };
+
+  const selectedAddressHandler = (id) => {
+    dispatchAddressState({
+      type: "SELECTED",
+      id: id,
+    });
+  };
   const addressContext = {
     address: addressState.address,
     selected: addressState.selected,
     addAddress: addNewAddressHandler,
     removeAddress: removeAddressHandler,
+    selectedAddress: selectedAddressHandler,
   };
   return (
     <AddressContext.Provider value={addressContext}>

@@ -17,7 +17,9 @@ const SearchBar = ({ performSearchOperation, device }) => {
      *
      * setSearchValue - dispatch function of state.
      */
-    setSearchValue(event.target.value);
+    const value = event.target.value;
+    const trimmedSearchValue = value.trim();
+    setSearchValue(trimmedSearchValue);
   };
 
   const performSearchHandler = () => {
@@ -28,6 +30,7 @@ const SearchBar = ({ performSearchOperation, device }) => {
      *
      * Same function for mobile and desktop site.
      */
+
     performSearchOperation(searchValue);
   };
 

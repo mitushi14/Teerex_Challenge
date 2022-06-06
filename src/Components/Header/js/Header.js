@@ -48,7 +48,6 @@ const Header = ({ checkoutShow, performSearchOperation }) => {
             </NavLink>
           }
           <ShoppingCartBadgeIcon></ShoppingCartBadgeIcon>
-
           {screenWidth > 490 && (
             <AccountCircle className={`${headerStyles.cartProfileLogo}`} />
           )}

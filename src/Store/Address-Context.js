@@ -5,6 +5,7 @@ const AddressContext = React.createContext({
   selected: "",
   addAddress: (address) => {},
   removeAddress: (id) => {},
+  selectedAddress: (id) => {},
 });
 
 export default AddressContext;

@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import CartContext from "../../../Store/Cart-context";
 import ThankYouModule from "../css/ThankYou.module.css";
 
 const ThankYou = () => {
+  const cartCtx = useContext(CartContext);
   const history = useHistory();
   const continueButtonHandler = () => {
+    cartCtx.emptyCartItem();
     history.push("/");
   };
   return (

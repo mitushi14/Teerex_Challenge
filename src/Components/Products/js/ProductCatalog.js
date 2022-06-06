@@ -80,8 +80,12 @@ const ProductCatalog = () => {
      *
      * @returns {Array.<filteredArray>} - Array of objects with complete data on filtered set of products
      */
-    if (searchValueFromSearchBar.length === 0) {
+    if (
+      searchValueFromSearchBar.length === 0 ||
+      searchValueFromSearchBar === " "
+    ) {
       setFilteredArray(Products);
+      return;
     }
     const lowercaseSearchValueFromSearchBar =
       searchValueFromSearchBar.toLowerCase();
@@ -107,7 +111,7 @@ const ProductCatalog = () => {
      *
      * @returns {Array} - according to the condition.
      */
-    console.log(`arrays: ${filterList1}, ${filterList2}`);
+
     if (filterList1.length === 0) {
       return filterList2;
     } else if (filterList2.length === 0) {

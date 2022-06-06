@@ -187,11 +187,11 @@ const FilterPanel = ({ closeFilter, getFilteredState, clearFilteredState }) => {
                 {showGender ? <Remove></Remove> : <Add></Add>}
               </button>
             </div>
-            <div>
-              {showGender &&
-                gender.map((ele) => {
-                  return (
-                    <>
+            {showGender &&
+              gender.map((ele, i) => {
+                return (
+                  <div key={`gender${i}`}>
+                    <label htmlFor={ele} id={ele.id}>
                       <input
                         type="radio"
                         id={ele.id}
@@ -199,13 +199,14 @@ const FilterPanel = ({ closeFilter, getFilteredState, clearFilteredState }) => {
                         value={ele}
                         key={ele.id}
                         onChange={getGenderValue}
+                        aria-labelledby={ele.id}
                       ></input>{" "}
-                      <label htmlFor={ele}>{ele}</label>
-                      <br />
-                    </>
-                  );
-                })}
-            </div>
+                      {ele}
+                    </label>
+                    <br />
+                  </div>
+                );
+              })}
           </div>
           {/* -------------------------------------------------------------------------- */}
           {/* PRICE FILTERS */}
@@ -228,25 +229,23 @@ const FilterPanel = ({ closeFilter, getFilteredState, clearFilteredState }) => {
                 {showPrice ? <Remove></Remove> : <Add></Add>}
               </button>
             </div>
-            <div>
-              {showPrice &&
-                priceRange.map((ele, i) => {
-                  return (
-                    <>
-                      <input
-                        type="radio"
-                        id={`price${i + 1}`}
-                        value={ele.id}
-                        onChange={getPriceValue}
-                        name="name"
-                        key={ele.id}
-                      ></input>{" "}
-                      <label htmlFor={`price${i + 1}`}>{ele.value}</label>
-                      <br />
-                    </>
-                  );
-                })}
-            </div>
+            {showPrice &&
+              priceRange.map((ele, i) => {
+                return (
+                  <div key={`price${i}`}>
+                    <input
+                      type="radio"
+                      id={`price${i + 1}`}
+                      value={ele.id}
+                      onChange={getPriceValue}
+                      name="name"
+                      key={ele.id}
+                    ></input>{" "}
+                    <label htmlFor={`price${i + 1}`}>{ele.value}</label>
+                    <br />
+                  </div>
+                );
+              })}
           </div>
           {/* ----------------------------------------------------------------------------- */}
           {/* TYPE FILTERS */}
@@ -269,26 +268,24 @@ const FilterPanel = ({ closeFilter, getFilteredState, clearFilteredState }) => {
                 {showType ? <Remove></Remove> : <Add></Add>}
               </button>
             </div>
-            <div>
-              {showType &&
-                types.map((ele) => {
-                  return (
-                    <>
-                      <input
-                        type="checkbox"
-                        id={ele}
-                        value={ele}
-                        className={`${FilterStyles.checkbox}`}
-                        // checked={checkedState[index]}
-                        key={ele.id}
-                        onChange={getTypeValue}
-                      ></input>{" "}
-                      <label htmlFor={ele}>{ele}</label>
-                      <br />
-                    </>
-                  );
-                })}
-            </div>
+            {showType &&
+              types.map((ele, i) => {
+                return (
+                  <div key={`type${i}`}>
+                    <input
+                      type="checkbox"
+                      id={ele}
+                      value={ele}
+                      className={`${FilterStyles.checkbox}`}
+                      // checked={checkedState[index]}
+                      key={ele.id}
+                      onChange={getTypeValue}
+                    ></input>{" "}
+                    <label htmlFor={ele}>{ele}</label>
+                    <br />
+                  </div>
+                );
+              })}
           </div>
           {/* ---------------------------------------------------------------------- */}
         </div>

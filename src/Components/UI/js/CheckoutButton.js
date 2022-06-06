@@ -2,26 +2,46 @@ import "../../../GeneralCSS/generalCSS.css";
 import CheckoutButtonModule from "../css/CheckoutButton.module.css";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
-import CartContext from "../../../Store/Cart-context";
+import AddressContext from "../../../Store/Address-Context";
+import { useSnackbar } from "notistack";
 
 const CheckoutButton = () => {
   const history = useHistory();
-  const cartCtx = useContext(CartContext);
+  const addressCtx = useContext(AddressContext);
+  const { enqueueSnackbar } = useSnackbar();
 
+  const validateCheckoutRequest = () => {
+    console.log(addressCtx.address.length);
+    console.log(addressCtx.selected.length);
+    if (addressCtx.address.length === 0) {
+      enqueueSnackbar("Please add atleast 1 address to continue", {
+        variant: "error",
+      });
+      return false;
+    }
+
+    if (addressCtx.selected.length === 0) {
+      enqueueSnackbar("Please select atleast 1 address to continue", {
+        variant: "warning",
+      });
+      return false;
+    }
+
+    return true;
+  };
   const checkoutEventHandler = () => {
     /**
      * redirects to thank you page
      * removes cart items from local storage
      * empties the cart context items array and puts total amount to 0
      */
-    history.push("/thankyou");
-    localStorage.removeItem("cartItems");
-    cartCtx.items = [];
-    cartCtx.totalAmount = 0;
+    if (validateCheckoutRequest()) {
+      history.push("/thankyou");
+    }
   };
   return (
     <button
-      className={`buttons ${CheckoutButtonModule.marginTop}`}
+      className={`buttons ${CheckoutButtonModule.marginTop} ${CheckoutButtonModule.marginBottom}`}
       onClick={checkoutEventHandler}
     >
       Checkout

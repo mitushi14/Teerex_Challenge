@@ -20,7 +20,7 @@ const ShoppingCartBadgeIcon = () => {
       <ShoppingCartOutlined
         className={CartBadgeStyles.shoppingCart}
       ></ShoppingCartOutlined>
-      <span>{cartCtx.items.length}</span>
+      <span data-testid="cart">{cartCtx.items.length}</span>
     </NavLink>
   );
 };
