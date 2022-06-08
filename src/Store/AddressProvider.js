@@ -17,9 +17,11 @@ const addressReducer = (state, action) => {
     const updatedAddressArray = state.address.filter((item) => {
       return item.id !== action.id;
     });
+    const selectedAddress =
+      state.selected === action.id ? "" : state.selected.toString();
     return {
       address: updatedAddressArray,
-      selected: state.selected,
+      selected: selectedAddress,
     };
   } else if (action.type === "SELECTED") {
     const selectedAddress = action.id;
@@ -28,6 +30,7 @@ const addressReducer = (state, action) => {
       selected: selectedAddress,
     };
   }
+
   return defaultState;
 };
 

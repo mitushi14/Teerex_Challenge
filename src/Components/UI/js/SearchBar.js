@@ -3,6 +3,10 @@ import { Search } from "@mui/icons-material";
 import { useState } from "react";
 
 export const scrollIntoView = () => {
+  /**
+   * @description - Function to scroll to the products
+   *               section after dsearch results are ready
+   */
   const products = document.getElementById("products");
   products.scrollIntoView({ block: "start", behavior: "smooth" });
 };

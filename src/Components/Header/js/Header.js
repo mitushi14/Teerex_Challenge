@@ -4,7 +4,7 @@ import tshirtLogo from "../../../Images/TeeRex_new_transparent.png";
 import "../../../GeneralCSS/generalCSS.css";
 import { AccountCircle } from "@mui/icons-material";
 import ShoppingCartBadgeIcon from "../../UI/js/ShoppingCartBadgeIcon";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SearchBar from "../../UI/js/SearchBar";
 import useResize from "../../../Hooks/use-Resize";
 import NavigationBurger from "../../Navigation/js/NavigationBurger";

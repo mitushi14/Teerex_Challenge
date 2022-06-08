@@ -11,8 +11,6 @@ const CheckoutButton = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const validateCheckoutRequest = () => {
-    console.log(addressCtx.address.length);
-    console.log(addressCtx.selected.length);
     if (addressCtx.address.length === 0) {
       enqueueSnackbar("Please add atleast 1 address to continue", {
         variant: "error",
@@ -20,7 +18,7 @@ const CheckoutButton = () => {
       return false;
     }
 
-    if (addressCtx.selected.length === 0) {
+    if (addressCtx.selected.toString().length === 0) {
       enqueueSnackbar("Please select atleast 1 address to continue", {
         variant: "warning",
       });

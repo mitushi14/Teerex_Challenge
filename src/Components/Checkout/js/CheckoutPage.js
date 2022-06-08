@@ -33,12 +33,12 @@ const CheckoutPage = () => {
               have to enter the shipping address manually with every order.
               Select the address you want to get your order delivered.
             </p>
-            {/* <div className="flexRowContainer"> */}
             <div className={`row ${CheckoutModule.marginBottom}`}>
               {addressCtx.address.length > 0 &&
                 addressCtx.address.map((address) => {
                   return (
                     <div
+                      key={address.id}
                       className={`col-sm-3 col-xs-6 ${CheckoutModule.addressCardMarginBottom}`}
                     >
                       <AddressItem address={address}></AddressItem>

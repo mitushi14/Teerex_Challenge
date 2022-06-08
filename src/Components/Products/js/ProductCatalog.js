@@ -5,7 +5,7 @@ import "../../../GeneralCSS/generalCSS.css";
 import FilterPanel from "../../Filter/js/FliterPanel";
 import { config } from "../../../App";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductItemCard from "./ProductItemCard";
 import FilterButton from "../../UI/js/FilterButton";
 import { CircularProgress } from "@mui/material";
@@ -14,15 +14,16 @@ import SearchBar from "../../UI/js/SearchBar";
 import useResize from "../../../Hooks/use-Resize";
 import { Link } from "react-scroll";
 import Footer from "../../Footer/js/Footer";
+import { useSnackbar } from "notistack";
 
 const ProductCatalog = () => {
-  const scrollToRef = useRef(null);
   const [Products, setProducts] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const [loading, setLoading] = useState(false);
   const [filteredArray, setFilteredArray] = useState([]);
   const [searchedArray, setSearchedArray] = useState([]);
   const screenWidth = useResize();
+  const { enqueueSnackbar } = useSnackbar();
 
   const fetchProductsList = async () => {
     /**
@@ -68,7 +69,7 @@ const ProductCatalog = () => {
       setFilteredArray(response.data);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      enqueueSnackbar(err.message, { variant: "error" });
     }
   };
 
@@ -326,7 +327,6 @@ const ProductCatalog = () => {
         <OurCollection></OurCollection>
 
         <div
-          ref={scrollToRef}
           id="products"
           className={`container ${ProductStyles.marginTop} ${ProductStyles.pseudoContainer}`}
         >
