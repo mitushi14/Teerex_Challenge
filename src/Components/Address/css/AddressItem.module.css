@@ -5,10 +5,11 @@
 .addressCard {
   padding: 1rem;
   border-radius: 5px;
-  height: 100%;
+  height: 7rem;
   width: 100%;
   word-wrap: break-word;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
 .active {
@@ -18,4 +19,11 @@
 
 .inactive {
   border: 2px solid var(--filterPanel);
+}
+
+.fullAddressTruncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

@@ -1,4 +1,10 @@
-import { render, screen, act } from "@testing-library/react";
+import {
+  render,
+  screen,
+  act,
+  fireEvent,
+  getByRole,
+} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { SnackbarProvider } from "notistack";
@@ -309,5 +315,28 @@ describe("Products Page - Filter Component", () => {
     expect(addToCartBtn.length).toEqual(1);
     expect(womenRadio.checked).toEqual(true);
     expect(typeCheckBox.checked).toEqual(true);
+  });
+  test("should show no results found if no products present for filters", async () => {
+    const filterButton = screen.getAllByTestId("FilterAltIcon")[0];
+    userEvent.click(filterButton);
+    const expandBtn1 = screen.getAllByTestId("AddIcon")[1];
+    userEvent.click(expandBtn1);
+    const womenRadio = screen.getAllByRole("radio")[1];
+    userEvent.click(womenRadio);
+    const expandBtn2 = screen.getAllByTestId("AddIcon")[1];
+    userEvent.click(expandBtn2);
+    const priceRadio = screen.getAllByRole("radio")[0];
+    userEvent.click(priceRadio);
+    const showResultsBtn = screen.getByRole("button", {
+      name: /show results/i,
+    });
+    userEvent.click(showResultsBtn);
+    const noResults = await screen.findAllByRole("paragraph", {
+      name: /No products found for the applied filters./i,
+    });
+
+    expect(noResults).toBeInTheDocument();
+    expect(womenRadio.checked).toEqual(true);
+    expect(priceRadio.checked).toEqual(true);
   });
 });

@@ -28,7 +28,7 @@ li:hover {
 }
 
 .profileContainer {
-  height: 20%;
+  height: 35%;
   width: 100%;
   background-color: var(--navBar);
   position: relative;
@@ -41,7 +41,7 @@ li:hover {
 
 .accountNameContainer {
   position: absolute;
-  top: 40%;
+  top: 25%;
   left: 10%;
 }
 
@@ -56,4 +56,8 @@ li:hover {
 
 .cartList {
   margin-left: 0;
+}
+
+.name {
+  text-align: center;
 }

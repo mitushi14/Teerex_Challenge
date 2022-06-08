@@ -5,7 +5,7 @@ import "../../../GeneralCSS/generalCSS.css";
 import FilterPanel from "../../Filter/js/FliterPanel";
 import { config } from "../../../App";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProductItemCard from "./ProductItemCard";
 import FilterButton from "../../UI/js/FilterButton";
 import { CircularProgress } from "@mui/material";
@@ -16,10 +16,12 @@ import { Link } from "react-scroll";
 import Footer from "../../Footer/js/Footer";
 
 const ProductCatalog = () => {
+  const scrollToRef = useRef(null);
   const [Products, setProducts] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const [loading, setLoading] = useState(false);
   const [filteredArray, setFilteredArray] = useState([]);
+  const [searchedArray, setSearchedArray] = useState([]);
   const screenWidth = useResize();
 
   const fetchProductsList = async () => {
@@ -97,6 +99,7 @@ const ProductCatalog = () => {
       );
     });
     setFilteredArray(filteredProductsArray);
+    setSearchedArray(filteredProductsArray);
   };
 
   const arrayIntersection = (filterList1, filterList2) => {
@@ -122,7 +125,52 @@ const ProductCatalog = () => {
       return [];
     }
   };
+
+  const filterColors = (array, filtersObject) => {
+    /**
+     * @description - generic function to filter Products according to colors
+     *               indivisually or on search result.
+     */
+    return array.filter((product) => {
+      return filtersObject.color.includes(product.color);
+    });
+  };
+
+  const filterGender = (array, filtersObject) => {
+    /**
+     * @description - generic function to filter Products according to gender
+     *               indivisually or on search result.
+     */
+    return array.filter((product) => {
+      return filtersObject.gender === product.gender;
+    });
+  };
+
+  const filterType = (array, filtersObject) => {
+    /**
+     * @description - generic function to filter Products according to type
+     *               indivisually or on search result.
+     */
+    return array.filter((product) => {
+      return filtersObject.type.includes(product.type);
+    });
+  };
+
+  const filterPrice = (array, filtersObject) => {
+    /**
+     * @description - generic function to filter Products according to price
+     *               indivisually or on search result.
+     */
+    return array.filter((product) => {
+      return (
+        product.price >= filtersObject.price.min &&
+        product.price <= filtersObject.price.max
+      );
+    });
+  };
+
   const getFilteredStateFromFilterPanel = (filteredStateFromPanel) => {
+    console.log(filteredStateFromPanel);
     /**
      * @param {object} filteredStateFromPanel - Object has the following properties:
      *
@@ -136,6 +184,15 @@ const ProductCatalog = () => {
      *
      * @returns {Array.<filteredArray>} - Array of objects with complete data on filtered set of products
      */
+    if (
+      filteredStateFromPanel.color.length === 0 &&
+      filteredStateFromPanel.type.length === 0 &&
+      filteredStateFromPanel.gender.length === 0 &&
+      filteredStateFromPanel.price.min === -1
+    ) {
+      setFilteredArray(Products);
+      return;
+    }
 
     let colorFilteredArray = [];
     let genderFilteredArray = [];
@@ -158,31 +215,32 @@ const ProductCatalog = () => {
      *
      * @param {Array.<filteredArrayofTypeandPrice>} filteredArrayofTypeandPrice - stores results of filtered array after intersection of typeFilteredArray and priceFilteredArray
      */
+
     if (filteredStateFromPanel.color.length > 0) {
-      colorFilteredArray = filteredArray.filter((product) => {
-        return filteredStateFromPanel.color.includes(product.color);
-      });
+      colorFilteredArray =
+        searchedArray.length === 0
+          ? filterColors(Products, filteredStateFromPanel)
+          : filterColors(searchedArray, filteredStateFromPanel);
     }
 
     if (filteredStateFromPanel.gender.length > 0) {
-      genderFilteredArray = filteredArray.filter((product) => {
-        return filteredStateFromPanel.gender === product.gender;
-      });
+      genderFilteredArray =
+        searchedArray.length === 0
+          ? filterGender(Products, filteredStateFromPanel)
+          : filterGender(searchedArray, filteredStateFromPanel);
     }
 
     if (filteredStateFromPanel.type.length > 0) {
-      typeFilteredArray = filteredArray.filter((product) => {
-        return filteredStateFromPanel.type.includes(product.type);
-      });
+      typeFilteredArray =
+        searchedArray.length === 0
+          ? filterType(Products, filteredStateFromPanel)
+          : filterType(searchedArray, filteredStateFromPanel);
     }
-
     if (filteredStateFromPanel.price.min > -1) {
-      priceFilteredArray = filteredArray.filter((product) => {
-        return (
-          product.price >= filteredStateFromPanel.price.min &&
-          product.price <= filteredStateFromPanel.price.max
-        );
-      });
+      priceFilteredArray =
+        searchedArray.length === 0
+          ? filterPrice(Products, filteredStateFromPanel)
+          : filterPrice(searchedArray, filteredStateFromPanel);
     }
 
     filteredArrayofColorandGender = arrayIntersection(
@@ -215,7 +273,7 @@ const ProductCatalog = () => {
      */
     filteredState.gender = "";
     filteredState.type = [];
-    filteredState.price = {};
+    filteredState.price = { min: -1, max: -1 };
     filteredState.color = [];
     setShowColours(false);
     setShowGender(false);
@@ -230,6 +288,7 @@ const ProductCatalog = () => {
         performSearchOperation={performSearchOnClickHandler}
         device="desktop"
       ></Header>
+
       <section className={ProductStyles.section}>
         <div className="websiteContainer">
           {screenWidth <= 880 && (
@@ -247,17 +306,19 @@ const ProductCatalog = () => {
         >
           <br></br>
           <br></br>
-          {/* <div className={ProductStyles.heroImageText}>
-            A fine <br />
-            collection
+          <div className={ProductStyles.heroImageText}>
+            A t-shirt <br />
+            for every
             <br />
-            for everyone
-          </div> */}
+            story
+          </div>
           <Link
             className={ProductStyles.heroImageButton}
             to="products"
             spy={true}
             smooth={true}
+            offset={-50}
+            duration={100}
           >
             Shop Now
           </Link>
@@ -265,6 +326,7 @@ const ProductCatalog = () => {
         <OurCollection></OurCollection>
 
         <div
+          ref={scrollToRef}
           id="products"
           className={`container ${ProductStyles.marginTop} ${ProductStyles.pseudoContainer}`}
         >
@@ -310,7 +372,9 @@ const ProductCatalog = () => {
                     );
                   })
                 ) : (
-                  <p>No products found for the applied filters.</p>
+                  <p className={ProductStyles.noProduct}>
+                    No products found for the applied filters.
+                  </p>
                 )}
               </div>
             </div>

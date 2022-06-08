@@ -6,7 +6,6 @@ import NewAddressForm from "../../Address/js/NewAddressForm";
 import AddressContext from "../../../Store/Address-Context";
 import Header from "../../Header/js/Header";
 import AddNewAddressButton from "../../UI/js/AddNewAddressButton";
-import "bootstrap/dist/css/bootstrap.min.css";
 import CheckoutModule from "../css/CheckoutPage.module.css";
 import OrderSummary from "./OrderSummary";
 import CheckoutButton from "../../UI/js/CheckoutButton";
@@ -34,6 +33,7 @@ const CheckoutPage = () => {
               have to enter the shipping address manually with every order.
               Select the address you want to get your order delivered.
             </p>
+            {/* <div className="flexRowContainer"> */}
             <div className={`row ${CheckoutModule.marginBottom}`}>
               {addressCtx.address.length > 0 &&
                 addressCtx.address.map((address) => {
@@ -46,10 +46,6 @@ const CheckoutPage = () => {
                   );
                 })}
             </div>
-
-            {showAddressForm && (
-              <NewAddressForm showForm={setAddressForm}></NewAddressForm>
-            )}
             {!showAddressForm && addressCtx.address.length <= 3 ? (
               <AddNewAddressButton
                 onclick={() => {
@@ -58,6 +54,10 @@ const CheckoutPage = () => {
               ></AddNewAddressButton>
             ) : (
               !showAddressForm && <p>You can only add 4 addresses at a time</p>
+            )}
+
+            {showAddressForm && (
+              <NewAddressForm showForm={setAddressForm}></NewAddressForm>
             )}
             <h2 className={CheckoutModule.marginTop}>Cart Items</h2>
             <hr></hr>

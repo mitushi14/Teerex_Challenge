@@ -59,9 +59,10 @@ const FilterPanel = ({ closeFilter, getFilteredState, clearFilteredState }) => {
     setfiltersValue((prevFiltersState) => {
       return {
         gender: prevFiltersState.gender,
+        // type: [...prevFiltersState.type, event.target.value],
         type: event.target.checked
           ? [...prevFiltersState.type, event.target.value]
-          : [prevFiltersState.type.filter((ele) => ele !== event.target.value)],
+          : prevFiltersState.type.filter((ele) => ele !== event.target.value),
         price: prevFiltersState.price,
         color: prevFiltersState.color,
       };
@@ -81,7 +82,9 @@ const FilterPanel = ({ closeFilter, getFilteredState, clearFilteredState }) => {
         gender: prevFiltersState.gender,
         type: prevFiltersState.type,
         price: prevFiltersState.price,
-        color: [...prevFiltersState.color, colorBtnValue],
+        color: prevFiltersState.color.includes(colorBtnValue)
+          ? prevFiltersState.color.filter((ele) => ele !== colorBtnValue)
+          : [...prevFiltersState.color, colorBtnValue],
       };
     });
   };

@@ -33,7 +33,7 @@ const AddressItem = ({ address }) => {
         <span>{address.fullName}</span>
         <DeleteButton id={address.id}>Delete</DeleteButton>
       </div>
-      <p>{address.address}</p>
+      <p className={AddressItemModule.fullAddressTruncate}>{address.address}</p>
     </div>
   );
 };

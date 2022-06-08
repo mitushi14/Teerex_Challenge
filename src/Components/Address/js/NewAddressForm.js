@@ -55,9 +55,9 @@ const NewAddressForm = ({ showForm }) => {
         className={`${NewAddressModule.marginTop}`}
       ></textarea>
       <div className={`flexRowContainer ${NewAddressModule.marginTop} `}>
-        <AddAddressButton className={`${NewAddressModule.marginRight}`}>
-          Add Address
-        </AddAddressButton>
+        <AddAddressButton
+          className={`${NewAddressModule.marginRight}`}
+        ></AddAddressButton>
         <CancelButton onclick={showForm}>Cancel</CancelButton>
       </div>
     </form>

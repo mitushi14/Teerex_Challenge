@@ -44,7 +44,7 @@ const NavigationBurger = () => {
                   <AccountCircleIcon
                     className={NavigationBurgerStyles.accountCircle}
                   ></AccountCircleIcon>
-                  <span>Dummy Name</span>
+                  <span className={NavigationBurgerStyles.name}>Mitushi</span>
                 </div>
                 <div className={NavigationBurgerStyles.marginButton}>
                   <CloseButton setShowMenu={setShowMenu}></CloseButton>

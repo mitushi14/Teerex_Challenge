@@ -1,9 +1,6 @@
 import QtyBarStyles from "../css/QtyBar.module.css";
 import { Add, Remove } from "@mui/icons-material";
 import "../../../GeneralCSS/generalCSS.css";
-import DeleteButton from "./DeleteButton";
-import CartContext from "../../../Store/Cart-context";
-import { useContext } from "react";
 
 const QtyBar = ({
   handleAdd,
@@ -24,17 +21,23 @@ const QtyBar = ({
    *
    * @param {Int} maxProductQty - maximum quantity available for each product
    */
-  const cartCtx = useContext(CartContext);
-
-  const deleteCartItem = () => {
-    /**
-     * @param {Function} deleteCartItem - Function deletes item from the cart uses deleteItem from Cart Context.
-     */
-    cartCtx.deleteItem(id);
-  };
 
   return (
     <div className={QtyBarStyles.qtyBarFlexContainer}>
+      {value > 1 ? (
+        <button
+          className={`buttons ${QtyBarStyles.buttonsPadding}`}
+          onClick={() => {
+            handleRemove(value - 1);
+          }}
+        >
+          <Remove></Remove>
+        </button>
+      ) : (
+        <div className={QtyBarStyles.emptySpace}></div>
+      )}
+      <p className={QtyBarStyles.value}>{value}</p>
+
       <button
         className={`buttons ${QtyBarStyles.buttonsPadding}`}
         onClick={() => {
@@ -47,23 +50,6 @@ const QtyBar = ({
       >
         <Add></Add>
       </button>
-      <p className={QtyBarStyles.value}>{value}</p>
-
-      {value === 1 ? (
-        <DeleteButton
-          deleteCartItem={deleteCartItem}
-          type="deleteItem"
-        ></DeleteButton>
-      ) : (
-        <button
-          className={`buttons ${QtyBarStyles.buttonsPadding}`}
-          onClick={() => {
-            handleRemove(value - 1);
-          }}
-        >
-          <Remove></Remove>
-        </button>
-      )}
     </div>
   );
 };

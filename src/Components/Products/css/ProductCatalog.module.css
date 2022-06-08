@@ -9,15 +9,15 @@
 }
 
 .heroImageText {
-  color: #b5431e;
+  color: #fff;
   font-weight: 600;
   position: absolute;
-  left: 15%;
-  top: 28%;
+  left: 10%;
+  top: 20%;
   /* margin-top: 6.5rem; */
   /* text-align: center; */
   /* margin-left: 5rem; */
-  font-size: 7rem;
+  font-size: 6rem;
   /* text-shadow: 0 2px 5px var(--heroImageTextShadow); */
 }
 
@@ -65,22 +65,15 @@
   padding-bottom: 8rem;
 }
 
+.noProduct {
+  text-align: center;
+}
 /* MEDIA QUERIES  */
 
 @media screen and (max-width: 630px) {
   .heroImageText {
-    font-size: 4rem;
-    margin-left: 4rem;
-  }
-}
-
-@media screen and (max-width: 440px) {
-  .heroImageText {
-    font-size: 3rem;
-    margin-left: 3rem;
-  }
-  .section {
-    padding-bottom: 4rem;
+    top: 20%;
+    font-size: 5rem;
   }
 }
 
@@ -110,6 +103,14 @@
     left: 15%;
     padding: 0.4rem 1.6rem;
   }
+
+  .heroImageText {
+    top: 22%;
+    font-size: 4.5rem;
+  }
+  .section {
+    padding-bottom: 4rem;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -118,10 +119,15 @@
   }
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 335px) {
   .heroImageButton {
     left: 7%;
     padding: 0.4rem 1.4rem;
+  }
+
+  .heroImageText {
+    font-size: 3rem;
+    top: 35%;
   }
 }
 

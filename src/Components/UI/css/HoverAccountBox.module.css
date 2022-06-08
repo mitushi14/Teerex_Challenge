@@ -1,0 +1,29 @@
+.hoverBox {
+  width: 16%;
+  height: auto;
+  position: fixed;
+  top: 3.5rem;
+  right: 0;
+  background-color: var(--fontColorOnBg);
+  z-index: 1;
+  padding: 1rem 2rem;
+  box-shadow: 1rem 0.4rem 1rem var(--cardColorShadow);
+  transition: all 0.3s;
+}
+
+.listItem {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 825px) {
+  .hoverBox {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .hoverBox {
+    width: 35%;
+  }
+}

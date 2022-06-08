@@ -16,7 +16,7 @@ const ThankYou = () => {
       <p className={ThankYouModule.line}>
         Your order will be delivered within 3-4 business days.
       </p>
-      <div>
+      <div className={ThankYouModule.marginTop}>
         <button
           className={`buttons ${ThankYouModule.continueButton}`}
           onClick={continueButtonHandler}
