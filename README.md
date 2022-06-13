@@ -15,5 +15,5 @@ npm install
 ### To run the website
 npm start
 
-## To run the test cases
+### To run the test cases
 npm test
